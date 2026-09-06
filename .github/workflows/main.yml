@@ -182,7 +182,7 @@ jobs:
             ./**/build/reports/androidTests/connected/**
 
   snapshot-deployment:
-    if: github.repository == 'curiosity-tests/leakcanary' && 'push' == 'push'
+    if: github.repository == 'square/leakcanary' && 'push' == 'push'
     needs: [ checks ]
     runs-on: ubuntu-latest
     steps:
