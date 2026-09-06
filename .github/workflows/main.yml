@@ -28,7 +28,7 @@ permissions:
 env:
   # The one variable that separates the arms: on baseline, action-checkout
   # skips its Set up Chalk step entirely.
-  CHALK_ON: ${{ github.event_name == 'workflow_dispatch' && inputs.leg != 'baseline' }}
+  CHALK_ON: ${{ inputs.leg == 'instrumented' }}
 
 run-name: "Main ${{ inputs.leg || 'push' }} ${{ inputs.racecar_run }}"
 
@@ -182,7 +182,7 @@ jobs:
             ./**/build/reports/androidTests/connected/**
 
   snapshot-deployment:
-    if: github.repository == 'square/leakcanary' && github.event_name == 'push'
+    if: github.repository == 'curiosity-tests/leakcanary' && 'push' == 'push'
     needs: [ checks ]
     runs-on: ubuntu-latest
     steps:
